@@ -725,11 +725,11 @@
       flex: 1;
     }
     
-    #references > ul {
+    #resources > ul:not(.short-ul) {
       margin-top: 2rem;
     }
     
-    #references > ul > li {
+    #resources > ul:not(.short-ul) > li {
       margin-bottom: 2rem;
     }
 
@@ -1069,18 +1069,20 @@
         <a href="#js-add-css-form-field" class="nav-sub">Form Field Questions</a>
         <a href="#js-two-part-qs">Two-Part Questions</a>
   
-  
   <div class="nav-section-label">Section 7</div>
-  <a class="only-section" href="#pre-launch-checklist">Pre-Launch Checklist</a>
+  <a class="only-section" href="#common-gotchas">Common Gotchas</a>
   
   <div class="nav-section-label">Section 8</div>
-    <a class="only-section" href="#downloading-data">Downloading Your Data</a>
+  <a class="only-section" href="#pre-launch-checklist">Pre-Launch Checklist</a>
   
   <div class="nav-section-label">Section 9</div>
+    <a class="only-section" href="#downloading-data">Downloading Your Data</a>
+  
+  <div class="nav-section-label">Section 10</div>
     <a class="only-section" href="#data-file">Understanding Your Data File</a>
   
-  <div class="nav-section-label">Reference</div>
-    <a class="only-section" href="#common-gotchas">Common Gotchas</a>
+  <div class="nav-section-label">Resources</div>
+    <a class="only-section" href="#links">Links</a>
     <a href="#code-bank-css">CSS Code Bank</a>
         <a href="#code-bank-css-gen" class="nav-sub">General CSS Rulesets</a>
         <a href="#code-bank-css-q-type" class="nav-sub">Question Type Rulesets</a>
@@ -1106,6 +1108,10 @@
           <a href="#code-bank-js-gen-auto-submit" class="nav-sub2">Auto Submit</a>
           <a href="#code-bank-js-gen-auto-submit-one" class="nav-sub3">One Question</a>
             <a href="#code-bank-js-gen-auto-submit-multi" class="nav-sub3">Multiple Questions</a>
+  
+  
+  
+  
   
   <div class="nav-section-label">Feedback</div>
     <a class="only-section" href="#feedback">Feedback Form</a>
@@ -1150,7 +1156,7 @@
 <ul class="short-ul">
   <li>
     <a href="https://yale.qualtrics.com/" target="_blank">yale.qualtrics.com</a> OR<br>
-    <a href="https://yalesurvey.qualtrics.com/">yalesurvey.qualtrics.com</a> if the above doesn't work
+    <a href="https://yalesurvey.qualtrics.com/" target="_blank">yalesurvey.qualtrics.com</a> if the above doesn't work
   </li>
   <li>Log in with your Yale NetID and password</li>
 </ul>
@@ -1510,7 +1516,7 @@ span.spanBefore {
 <p>Use the <span class="kw-ui">Publish</span> button (in the <span class="kw-sub-menu">Builder Toolbar</span>) as a manual Save throughout the building process — not just at launch. Don't worry, it sounds more official than it really is.</p>
 <p>Qualtrics does auto save, but hitting <span class="kw-ui">Publish</span> regularly ensures your changes are always committed.</p>
 
-<p>There <a href="https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/saving-and-restoring/">are cases</a> where auto save fails — and I've been burned by this in the past (although it has gotten better over the years).</p>
+<p>There <a href="https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/saving-and-restoring/" target="_blank">are cases</a> where auto save fails — and I've been burned by this in the past (although it has gotten better over the years).</p>
 
 <p><em>Technically</em>, the proper way to manually save is to create a new version (below), but if you're lazy like me, you'll just use the <span class="kw-ui">Publish</span> button. Doing this <em>can</em> make the values associated with the response options higher than expected, but if you follow my advice to set these values up yourself, this isn't an issue. It's not going to hurt anything either — it just affects how your <span class="kw-data">Data File</span> is generated, it doesn't change the data itself.</p>
 
@@ -1585,7 +1591,7 @@ span.spanBefore {
 
 <p>My recommended setup is <strong>one main item</strong> (question / task / scale / two-part question / etc.) per <span class="kw-concept">Block</span>. This way, a <span class="kw-concept">Block</span> will represent <strong>one page</strong> of your survey.</p>
 
-<p>This setup is the most <a href="https://www.qualtrics.com/support/survey-platform/survey-module/editing-questions/question-types-guide/advanced/timing/">robust</a> — it keeps your survey modular, makes randomization work cleanly, and ensures that Response Time can be captured for individual items.</p>
+<p>This setup is the most <a href="https://www.qualtrics.com/support/survey-platform/survey-module/editing-questions/question-types-guide/advanced/timing/" target="_blank">robust</a> — it keeps your survey modular, makes randomization work cleanly, and ensures that Response Time can be captured for individual items.</p>
 
 <p>RT data is an extremely rich source of information, so don't throw it away — insert a <span class="kw-type">Response Time Question</span> into each <span class="kw-concept">Block</span>!</p>
 
@@ -2141,7 +2147,7 @@ Strongly&lt;br&gt;agree</code>
     <span class="callout-icon">✅</span><span class="callout-label" style="color:var(--bp-icon)"><span class="label-keyword">Best Practice</span></span>
   </div>
   <div class="callout-body">
-    <p>Consider writing your question so that the textbox is embedded within the question text itself (e.g., "I would estimate the value is ____"), rather than as a separate field below the question. This feels more natural for respondents and can improve data quality, though it does require a small amount of additional setup. See <a href="js-insert-text-te">Section 6: JavaScript - Insert Text</a> for details.</p>
+    <p>Consider writing your question so that the textbox is embedded within the question text itself (e.g., "I would estimate the value is ____"), rather than as a separate field below the question. This feels more natural for respondents and can improve data quality, though it does require a small amount of additional setup. See <a href="#js-insert-text-te">Section 6: JavaScript - Insert Text</a> for details.</p>
    
     <div class="screenshot-wrap">
       <div class="screenshot-placeholder" id="screenshot-text-entry-inline">
@@ -2169,7 +2175,7 @@ Strongly&lt;br&gt;agree</code>
     <span class="callout-icon">🛑</span><span class="callout-label" style="color:var(--warn-icon)"><span class="label-keyword">Warning</span></span>
   </div>
   <div class="callout-body">
-          <p>Qualtrics changed this Question Type in their New Survey Design (one of the few downsides of the New Design), so the label is <em>above</em> the textbox instead of in front and there's no built-in way to override this. It's very easy to fix with CSS though — see See <a href="css-form-fields">Section 5: CSS - Form Fields</a> for specifics.</p>
+          <p>Qualtrics changed this Question Type in their New Survey Design (one of the few downsides of the New Design), so the label is <em>above</em> the textbox instead of in front and there's no built-in way to override this. It's very easy to fix with CSS though — see See <a href="#css-form-fields">Section 5: CSS - Form Fields</a> for specifics.</p>
       
       <p>You will need to adjust Form Field Questions <em>individually</em>, but you only need to change a <em><strong>single</strong></em> number: the width of the label. This will line the boxes up vertically.</p>
       
@@ -2639,7 +2645,7 @@ Strongly&lt;br&gt;agree</code>
 
 <p><span class="kw-concept">Question Export Tags</span> will be the column names in your <span class="kw-data">Data File</span> for each question in a Matrix Table.</p>
 
-<p>When you download your <span class="kw-data">Data File</span>, you will either download the responses as "Values" (the <span class="kw-concept">Recode Values</span>) or "Labels" (the full option text or the <span class="kw-concept">Variable Naming</span> if you have that set up) — which is why this step is important. This will be explained in more detail in <a href="downloading-data">Section 8: Downloading Your Data</a>.</p>
+<p>When you download your <span class="kw-data">Data File</span>, you will either download the responses as "Values" (the <span class="kw-concept">Recode Values</span>) or "Labels" (the full option text or the <span class="kw-concept">Variable Naming</span> if you have that set up) — which is why this step is important. This will be explained in more detail in <a href="#downloading-data">Section 9: Downloading Your Data</a>.</p>
 
 <div class="carousel-wrap">
   <div class="carousel" id="carousel-recode-values">
@@ -2780,7 +2786,7 @@ Strongly&lt;br&gt;agree</code>
   <div class="callout-body">
     <p>Depending on which Platform you use (e.g., MTurk, Prolific), you will want to include different Embedded Data fields to capture the participants' Platform ID and enable a smoother payment process.</p>
     <p>These Embedded Data elements should be placed at the <strong>top</strong> of your <span class="kw-sub-menu">Survey Flow</span>, before any blocks, so the value is recorded before the participant begins the survey.</p>
-    <p>This will be explained in more detail in <a href="url-parameters">Section 4: Survey Flow - URL Parameters</a>.</p>
+    <p>This will be explained in more detail in <a href="#url-parameters">Section 4: Survey Flow - URL Parameters</a>.</p>
   </div>
 </div>
 
@@ -2865,7 +2871,7 @@ Strongly&lt;br&gt;agree</code>
     
     <p>The "Edit count" menu will appear once you check the <span class="kw-ui">Evenly Present Elements</span> option.</p>
     
-    <p>If you previewed your survey, the Randomizer will have already started counting those — resetting ensures the count starts fresh with real participants. This is easy to forget, so it is included in the Pre-Launch Checklist in <a href="pre-launch-checklist">Section 7: Pre-Launch Checklist</a>.</p>
+    <p>If you previewed your survey, the Randomizer will have already started counting those — resetting ensures the count starts fresh with real participants. This is easy to forget, so it is included in the Pre-Launch Checklist in <a href="#pre-launch-checklist">Section 8: Pre-Launch Checklist</a>.</p>
       
     <div class="carousel-wrap">
       <div class="carousel" id="carousel-reset-count">
@@ -3042,7 +3048,7 @@ https://app.prolific.com/submissions/complete?cc=REFUSED_CODE
 <p>If you're using MTurk instead, you should set up a custom end of survey message, such as:
 </p>
 
-<p>As you have indicated that you do not wish to participate in the survey, please return to MTurk and return the HIT.</p>
+<textarea style="width:34rem;height:fit-content;padding:4px 8px;font:inherit;">As you have indicated that you do not wish to participate in the survey, please return to MTurk and return the HIT.</textarea>
 
 <hr class="section-divider" id="screeners" />
 <h4>Screeners</h4>
@@ -3056,13 +3062,14 @@ https://app.prolific.com/submissions/complete?cc=REFUSED_CODE
 
 <p>If you are redirecting participants (like you should with Prolific) you also need to create a <span class="kw-concept">Block</span> with a Text / Graphic Question, informing participants that they did not qualify for the survey, but will still receive compensation. In the Survey Template, I have it set up as:</p>
 
-<p><strong>Thank you for your participation!</strong></p>
+<textarea style="width:34rem;height:13rem;padding:4px 8px;font:inherit;margin-bottom:1rem;"><p><strong>Thank you for your participation!</strong></p>
 
 <p>Although you do not qualify for the full survey, you have still earned $1 for your time.</p>
 
-You will be redirected back to Prolific once you proceed to the next page.</p>
+You will be redirected back to Prolific once you proceed to the next page.</p></textarea>
 
-<p>If you're using MTurk, you should use a custom end of survey message instead.</p>
+
+<p>If you're using MTurk, you should use a custom end of survey message instead. How you word it will depend on how you're setting up your screeners, i.e., if you are paying those who do not qualify.</p>
 
 <div class="screenshot-wrap">
   <div class="screenshot-placeholder" id="screenshot-survey-flow-screeners">
@@ -3083,7 +3090,30 @@ You will be redirected back to Prolific once you proceed to the next page.</p>
 
 <p>Although this goes at the <em>end</em> of your <span class="kw-sub-menu">Survey Flow</span>, I'm putting this here because you might as well set up all the End of Survey elements at once.</p>
 
-<p>For MTurk, there's a specific way to set up the end of survey message to generate a Secret Key for participants to copy & paste to receive their payment — I have to come back and add this later (sorry).</p>
+<p>For MTurk (through CloudResearch), there's a specific way to set up the end of survey message to generate a Secret Key for participants to copy & paste to receive their payment — which you can find the instructions for <a href="https://www.cloudresearch.com/resources/blog/qualtrics-and-other-platforms-mechanical-turk-integration-with-cloudresearch/" target="_blank">here</a>.</p>
+
+<p>Below I will paste the code you have to add to your custom End of Survey message:</p>
+
+<div class="code-snippet">
+<code>&lt;iframe width=‘100%’ height=‘200’ id=“cr_secretcode”&gt;&lt;/iframe&gt;
+&lt;script&gt;
+    function createIFrame() {
+        var ref = encodeURIComponent(document.location.search);
+        var ifrm = document.getElementById(“cr_secretcode”);
+        ifrm.setAttribute(“src”, “https://app.cloudresearch.com/TakeLaunchedSurvey/DynamicKey/?referrer= + ref);
+    }
+    createIFrame();
+&lt;/script&gt;</code>
+</div>
+
+
+<p>This is slightly different than the code I have saved, which is:</p>
+
+<div class="code-snippet">
+<code>&lt;iframe height="200" sandbox="" src="https://app.cloudresearch.com/TakeLaunchedSurvey/DynamicKey" width="100%"&gt;&lt;/iframe&gt;</code>
+</div>
+
+<p>There is also the random number generator option, which I used prior to CloudResearch being launched. You can read about how to set that up <a href="https://blog.mturk.com/getting-great-survey-results-from-mturk-and-qualtrics-be1704ff9786" target="_blank">here</a>.</p>
 
 
 <hr class="section-divider" id="random-assignment" />
@@ -3109,7 +3139,7 @@ You will be redirected back to Prolific once you proceed to the next page.</p>
 
 <p>This will allow you to refer to this value elsewhere, which is useful for more complicated surveys.</p>
 
-<p>This will create a "duplicate" column in your <span class="kw-data">Data File</span>. You can remove the less sensible one in your working file. One column will be the Embedded Data column and the other will be the randomized order of the Randomizer (which you will get if you download the randomized order, see <a href="#downloading-data">Section 8: Downloading Your Data</a> for more details.</p>
+<p>This will create a "duplicate" column in your <span class="kw-data">Data File</span>. You can remove the less sensible one in your working file. One column will be the Embedded Data column and the other will be the randomized order of the Randomizer (which you will get if you download the randomized order, see <a href="#downloading-data">Section 9: Downloading Your Data</a> for more details.</p>
 
 <p>In the screenshot above, this would be the column <span class="kw-data">FL_7_DO</span>, since <span class="kw-data">FL_7</span> is the Flow ID of the Randomizer and <span class="kw-data">DO</span> means Display Order. In this case, this column will contain the values: <span class="kw-data">FL_8, FL_9, FL_10</span>, which are the IDs for the Embedded Data elements for the conditions. You can verify that this column matches the one that was automatically generated for the <span class="kw-data">condition</span> Embedded Data element. Below is a screenshot of these columns in Excel.</p>
 <div class="img-container-wrap">
@@ -3739,7 +3769,7 @@ if (conditionText) {
 
 <p>In general, these CSS rulesets are intended to apply to <em>every</em> applicable element. So, if you define a ruleset for a specific Question Type, then it'll apply to <em>every</em> <span class="kw-concept">Question</span> of that type.</p>
 
-<p>However, you can also apply rulesets only to specific questions. You can do that with JavaScript (more on this in <a href="js-add-css">Section 6: JavaScript - Adding CSS</a>) or by using a <span class="kw-concept">Question</span>'s <span class="kw-data">internal Qualtrics ID</span> and CSS.</p>
+<p>However, you can also apply rulesets only to specific questions. You can do that with JavaScript (more on this in <a href="#js-add-css">Section 6: JavaScript - Adding CSS</a>) or by using a <span class="kw-concept">Question</span>'s <span class="kw-data">internal Qualtrics ID</span> and CSS.</p>
 
 <p>Finding out the <span class="kw-data">internal ID</span> of a <span class="kw-concept">Question</span> is super easy! In the <span class="kw-sub-menu">Builder Toolbar</span>:</p>
 <p><span class="kw-ui">Tools</span> → <span class="kw-ui">Show internal IDs</span></p>
@@ -3956,7 +3986,7 @@ if (conditionText) {
 
 <p>JavaScript can be used to style <span class="kw-concept">Questions</span> using CSS or for more functional things, like auto-advancing the page, inserting new HTML elements (i.e., text), etc.</p>
 
-<p>Although Qualtrics does provide a <a href="https://api.qualtrics.com/82bd4d5c331f1-qualtrics-java-script-question-api-class">Guide</a> it is, quite frankly, terrible. Even I get confused trying to read it.</p>
+<p>Although Qualtrics does provide a <a href="https://api.qualtrics.com/82bd4d5c331f1-qualtrics-java-script-question-api-class" target="_blank">Guide</a> it is, quite frankly, terrible. Even I get confused trying to read it.</p>
 
 <hr class="section-divider" id="js-timing-functions" />
 
@@ -4495,19 +4525,103 @@ this.getQuestionContainer().insertAdjacentElement("beforebegin", style);</code>
 <ul class="short-ul">
   <li>We don't somehow corrupt their previous answer</li>
   <li>We don't lose the RT data for the first response</li>
+  <li>We have separate RT data for the second response</li>
 </ul>
 
-<p>Then we can Carry Forward their response and add JavaScript to disable the <span class="kw-concept">Question</span>, so they can't change it.</p>
+<h5>Text Entry Questions</h5>
 
-<p>TO DO</p>
+<p>This is <em>easiest</em> to do for Text Entry Questions.</p>
+
+<ol class="short-ul">
+  <li>Fully configure the <span class="kw-concept">Block</span> for the first question</li>
+    <li>
+      <span class="kw-menu">Copy</span> the <span class="kw-concept">Block</span>
+      <ul class="short-ul" type="a">
+        <li>For the repeated first question, add their response to the <em>real</em> first question as a <span class="kw-menu">Default Choice</span>:<br>
+        Builder Panel ⟶  Question Behavior ⟶  Default choices ⟶  Survey Question ⟶  (select the question) ⟶  (select the option which shows the text of the question)</li>
+        <li>Add the following JavaScript to the <span class="kw-data">onLoad</span> function:
+<div class="code-snippet">
+<code>var input = this.getQuestionContainer().querySelector(".text-input");
+input.disabled = true;
+input.style.webkitUserSelect = "none";
+input.style.msUserSelect = "none";
+input.style.mozUserSelect = "none";
+input.style.userSelect = "none";
+// optional - make it look locked in
+input.style.color = "grey";
+input.style.backgroundColor = "#e5e5e5";</code>
+</div>
+        </li>
+        <li>Add your follow-up question below</li>
+      </ul>
+    </li>
+    
+</ol>
+
+
+<div class="screenshot-wrap">
+  <div class="screenshot-placeholder" id="screenshot-two-part-locked-in">
+    <img src="https://i.imgur.com/QBGVJQT.png" alt="View of the Builder for a Two-Part Text Entry Question" />
+    <span>Screenshot: View of the Builder for a Two-Part Text Entry Question</span>
+  </div>
+  <button class="screenshot-expand" onclick="openLightbox(this.previousElementSibling.id)">⤢</button>
+</div>
+
+<h5>Multiple Choice Questions</h5>
+
+<p>(to do)</p>
 
 
 </section>
 
+<!-- ── Section 7: Common Gotchas ── -->
 
-<!-- ── Section 7: Pre-Launch Checklist ── -->
-<section class="section" id="pre-launch-checklist">
+<section class="section" id="common-gotchas">
 <div class="section-label">Section 7</div>
+
+<h2>Common Gotchas</h2>
+
+<p>Qualtrics is a powerful platform, but it has a few quirks that can catch you off guard — sometimes silently, with no warning. This section collects the most important ones in one place so you know what to watch out for.</p>
+
+<ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:1.25rem;margin-top:1.5rem;">
+
+  <li>
+    <strong>Advanced Randomization: breaks silently when you use the Edit Multiple Menu afterwards</strong><br>
+    If you set up <span class="kw-concept">Advanced Randomization</span> and then edit any of the option text using the Edit mutilple menu, the randomization will break — and Qualtrics will not warn you. Always set up Advanced Randomization as your very last step, after all option text is finalized. If you need to edit option text afterwards, re-check your Advanced Randomization settings before launching.
+  </li>
+
+  <li>
+    <strong>Matrix Tables: Recode Values reset when you use the Edit Multiple Menu</strong><br>
+    If you have set up Recode Values for a <span class="kw-type">Matrix Table</span> question and then edit your statements or scale points using the Edit Multiple Menu, Qualtrics will silently revert your Recode Values (the Question Export Tags and/or Variable Naming) back to the default. Always double-check your Recode Values after editing a matrix table.
+  </li>
+
+  <li>
+    <strong>Refresh the page after editing Look and Feel</strong><br>
+    After making any changes in <span class="kw-ui">Look and Feel</span>, refresh the page when you return to the <span class="kw-sub-menu">Builder</span>. Skipping this step can cause unexpected behaviour in the <span class="kw-sub-menu">Builder</span>.
+  </li>
+
+  <li>
+    <strong>Be cautious when multiple people are editing simultaneously</strong><br>
+    Qualtrics does not handle simultaneous editing well. If multiple collaborators are editing the survey at the same time, changes may conflict or behave unexpectedly. Try to coordinate with your team so only one person is editing at a time.
+  </li>
+
+  <li>
+    <strong>Be cautious when using HTML in question text</strong><br>
+    If you edit the question text in the normal (non-HTML) view after inserting your HTML, you may inadvertently delete part of your HTML without realizing it. Switch to HTML view before editing the text of questions with HTML.
+  </li>
+
+  <li>
+    <strong>Extra whitespace in question text is often caused by hidden HTML</strong><br>
+    If you notice unexpected whitespace at the end of a question, switch to HTML view and check for auto-inserted elements like <code>&lt;p&gt;</code>, <code>&lt;br&gt;</code>, or <code>&lt;div&gt;</code> that Qualtrics may have added. These are easy to miss in the normal view.
+  </li>
+
+</ul>
+  
+</section>
+
+<!-- ── Section 8: Pre-Launch Checklist ── -->
+<section class="section" id="pre-launch-checklist">
+<div class="section-label">Section 8</div>
 <h2>Pre-Launch Checklist</h2>
 
 <p>Before you distribute your survey, work through the following checklist.</p>
@@ -4537,13 +4651,13 @@ this.getQuestionContainer().insertAdjacentElement("beforebegin", style);</code>
     <li>
       <div class="prechecklist">
         <input type="checkbox">
-      <strong>Check the End of Survey messages</strong></div>
-      <p>Make sure any participant who is redirected to the end of the survey early — via the consent or screener branch logic — sees an appropriate closing message, not the default Qualtrics "Thank you for completing the survey" message.</p>
+      <strong>Check the End of Survey elements</strong></div>
+      <p>Make sure each End of Survey element is customized correctly — either redirecting participants to the correct URL or displaying an appropriate closing message.</p>
     </li>
     <li>
       <div class="prechecklist">
         <input type="checkbox">
-      <strong>Confirm Timing questions are in every block</strong></div>
+      <strong>Confirm Timing questions are in every Block</strong></div>
       <p>Open each block and make sure a <span class="kw-type">Timing</span> question is present. It's easy to forget one, especially if you added blocks late in the process.</p>
     </li>
     <li>
@@ -4576,9 +4690,9 @@ this.getQuestionContainer().insertAdjacentElement("beforebegin", style);</code>
 
 </section>
 
-<!-- ── Section 8: Downloading & Managing Your Data ── -->
+<!-- ── Section 9: Downloading & Managing Your Data ── -->
 <section class="section" id="downloading-data">
-<div class="section-label">Section 8</div>
+<div class="section-label">Section 9</div>
 <h2>Downloading &amp; Managing Your Data</h2>
 
 <p>Once data collection is complete — or even during, if you want to check your results so far — you can export your <span class="kw-data">Data File</span> from Qualtrics.</p>
@@ -4637,9 +4751,9 @@ this.getQuestionContainer().insertAdjacentElement("beforebegin", style);</code>
 
 </section>
 
-<!-- ── Section 9: Understanding Your Data File ── -->
+<!-- ── Section 10: Understanding Your Data File ── -->
 <section class="section" id="data-file">
-<div class="section-label">Section 9</div>
+<div class="section-label">Section 10</div>
 <h2>Understanding Your Data File</h2>
 
 <p>Before you export your data, it helps to know what you're looking at. Qualtrics data files can look intimidating at first — this section walks you through the structure so you're not caught off guard.</p>
@@ -4721,47 +4835,66 @@ this.getQuestionContainer().insertAdjacentElement("beforebegin", style);</code>
 </section>
 
 
-<!-- ── Common Gotchas ── -->
-<section class="section" id="references">
-<div class="section-label">Reference</div>
+<!-- ── Resources ── -->
+<section class="section" id="resources">
+<div class="section-label">Resources</div>
 
-<h2 id="common-gotchas">Common Gotchas</h2>
+<h2 id="links">Links</h2>
 
-<p>Qualtrics is a powerful platform, but it has a few quirks that can catch you off guard — sometimes silently, with no warning. This section collects the most important ones in one place so you know what to watch out for.</p>
+<h3>Qualtrics</h3>
 
-<ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:1.25rem;margin-top:1.5rem;">
-
+<ul class="short-ul">
   <li>
-    <strong>Advanced Randomization breaks silently when you edit option text</strong><br>
-    If you set up <span class="kw-concept">Advanced Randomization</span> for a multiple choice question and then edit any of the option text using the Edit mutilple menu afterwards, the randomization will break — and Qualtrics will not warn you. Always set up Advanced Randomization as your very last step, after all option text is finalized. If you need to edit option text afterwards, re-check your Advanced Randomization settings before launching.
+    <a href="https://www.qualtrics.com/support/survey-platform/survey-module/survey-checker/fraud-detection/#PreventBallotBoxStuffing" target="_blank">Prevent Ballot Box Stuffing</a>
   </li>
-
   <li>
-    <strong>Variable naming resets when you edit a matrix table</strong><br>
-    If you have set up variable naming for a <span class="kw-type">Matrix Table</span> question and then edit any of the response option text, Qualtrics will silently revert your variable naming back to the default. Always double-check your variable naming after editing a matrix table.
+    <a href="https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/saving-and-restoring/" target="_blank">Saving Your Survey</a>
   </li>
-
   <li>
-    <strong>Refresh the page after editing Look &amp; Feel</strong><br>
-    After making any changes in <span class="kw-ui">Look &amp; Feel</span>, refresh the page before returning to the survey <span class="kw-sub-menu">Builder</span>. Skipping this step can cause unexpected behavior in the <span class="kw-sub-menu">Builder</span>.
+    <a href="https://www.qualtrics.com/support/survey-platform/survey-module/editing-questions/question-types-guide/advanced/timing/"  target="_blank">Timing Questions</a>
   </li>
-
   <li>
-    <strong>Be cautious when multiple people are editing simultaneously</strong><br>
-    Qualtrics does not handle simultaneous editing well. If multiple collaborators are editing the survey at the same time, changes may conflict or behave unexpectedly. Try to coordinate with your team so only one person is editing at a time.
+    <a href="https://www.qualtrics.com/support/survey-platform/survey-module/editing-questions/validation/#CustomValidationMessages" target="_blank">Custom Validation Messages</a>
   </li>
-
   <li>
-    <strong>Avoid using HTML to style question text</strong><br>
-    Although Qualtrics allows you to write HTML directly in question text, this is risky. If you edit the question text in the normal (non-HTML) view, you may inadvertently delete part of your HTML without realizing it. Only use HTML in question text when absolutely necessary, and always switch to HTML view before editing.
+    <a href="https://api.qualtrics.com/82bd4d5c331f1-qualtrics-java-script-question-api-class" target="_blank">Qualtrics JavaScript Question API Class</a>
   </li>
-
-  <li>
-    <strong>Extra whitespace in question text is often caused by hidden HTML</strong><br>
-    If you notice unexpected whitespace at the end of a question, switch to HTML view and check for auto-inserted elements like <code>&lt;p&gt;</code>, <code>&lt;br&gt;</code>, or <code>&lt;div&gt;</code> that Qualtrics may have added. These are easy to miss in the normal view.
-  </li>
-
 </ul>
+
+<h3>Prolific</h3>
+
+<ul class="short-ul">
+  <li>
+    <a href="https://intercom-help.eu/prolific-research/en/articles/445127-data-collection#OwXFf50XWA1jnrLs" target="_blank" target="_blank">URL Parameters</a>
+  </li>
+  <li>
+    <a href="https://intercom-help.eu/prolific-research/en/articles/445178-what-survey-experimental-software-is-compatible-with-prolific" target="_blank">Setting up Completion Paths</a>
+  </li>
+  
+</ul>
+
+
+<h3>CloudResearch</h3>
+
+<ul class="short-ul">
+  <li>
+    <a href="https://go.cloudresearch.com/en/knowledge/automatically-capture-worker-ids" target="_blank">URL Parameters</a>
+  </li>
+  <li>
+    <a href="https://www.cloudresearch.com/resources/blog/qualtrics-and-other-platforms-mechanical-turk-integration-with-cloudresearch/" target="_blank">How to set up an End of Survey message with a Secret Key</a>
+  </li>
+</ul>
+
+
+<h3>MTurk</h3>
+
+<ul class="short-ul">
+  <li>
+    <a href="https://blog.mturk.com/getting-great-survey-results-from-mturk-and-qualtrics-be1704ff9786" target="_blank">Setting up Completion Codes using a Random Number Generator</a>
+  </li>
+</ul>
+  
+</p>
 
 <hr class="section-divider" id="code-bank-css" /> 
 
