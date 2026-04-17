@@ -1062,9 +1062,11 @@
   <div class="nav-section-label" style="display:none">Introduction</div>
   <a href="#introduction">Introduction</a>
     <a href="#before-begin">Before you Begin</a>
+    
 
   <div class="nav-section-label">Section 1</div>
   <a href="#getting-started">Getting Started</a> 
+    <a href="#survey-templates">Survey Templates</a>
     <a href="#new-survey">New Survey</a>
     <a href="#interface">The Interface</a>
     <a href="#first-steps">First Steps</a>
@@ -1104,19 +1106,19 @@
   
   <div class="nav-section-label">Section 5</div>
     <a href="#javascript">JavaScript</a>
-      <a href="#js-timing-functions">Onload, OnReady, OnUnload</a>
-      <a href="#js-insert-text">Insert Text Around Text Boxes</a>
-        <a href="#js-insert-text-te" class="nav-sub">Text Entry Questions</a>
-        <a href="#js-insert-text-ff" class="nav-sub">Form Field Questions</a>
-      <a href="#js-auto-focus">Auto Focus the Text Box</a>
-      <a href="#js-auto-submit">Auto Submit a Page</a>
-        <a href="#js-auto-submit-single" class="nav-sub">One Question per Page</a>
-        <a href="#js-auto-submit-multiple" class="nav-sub">Multiple Questions per Page</a>
-      <a href="#js-add-css">Adding CSS</a>
-        <a href="#js-add-css-basics" class="nav-sub">Basics</a>
-        <a href="#js-add-css-matrix-table" class="nav-sub">Matrix Table Questions</a>
-        <a href="#js-add-css-form-field" class="nav-sub">Form Field Questions</a>
-        <a href="#js-two-part-qs">Two-Part Questions</a>  
+      <a href="#js-timing-functions" class="nav-sub">Onload, OnReady, OnUnload</a>
+    <a href="#js-insert-text">Insert Text Around Text Boxes</a>
+      <a href="#js-insert-text-te" class="nav-sub">Text Entry Questions</a>
+      <a href="#js-insert-text-ff" class="nav-sub">Form Field Questions</a>
+    <a href="#js-auto-focus">Auto Focus the Text Box</a>
+    <a href="#js-auto-submit">Auto Submit a Page</a>
+      <a href="#js-auto-submit-single" class="nav-sub">One Question per Page</a>
+      <a href="#js-auto-submit-multiple" class="nav-sub">Multiple Questions per Page</a>
+    <a href="#js-add-css">Adding CSS</a>
+      <a href="#js-add-css-basics" class="nav-sub">Basics</a>
+      <a href="#js-add-css-matrix-table" class="nav-sub">Matrix Table Questions</a>
+      <a href="#js-add-css-form-field" class="nav-sub">Form Field Questions</a>
+      <a href="#js-two-part-qs">Two-Part Questions</a>  
   
   <div class="nav-section-label">Section 6</div>      
     <a href="#question-options">Question Options</a>
@@ -1349,6 +1351,16 @@
 <div class="section-label">Section 1</div>
   
 <h2>Getting Started</h2>
+
+<h3 id="survey-templates">Survey Templates</h3>
+
+<p><a href="https://github.com/HillaryParent/Qualtrics-Guide/blob/fe79f91685784ebd3ae2fd875904a4a07de5dcb9/Survey_Template_-_Styling_Only.qsf">Survey Template - Styling Only</a> — this file only has the custom CSS and various recommended Survey Options set up. Ideal for just starting out.</p>
+
+<p><a href="https://github.com/HillaryParent/Qualtrics-Guide/blob/fe79f91685784ebd3ae2fd875904a4a07de5dcb9/Survey_Template_-_Survey_Flow.qsf">Survey Template - Survey Flow</a> — this file has the custom CSS and Survey Options set up, as well as the basic Survey Flow elements (consent, screeners, etc.). Ideal when you're ready to put your survey together, after you're more familiar with Qualtrics.</p>
+
+<p>** I'm probably going to be updating this one, since Shane wants you to use a simpler design.</p>
+
+<p>Survey Template - Example Questions — this file has the custom CSS and Survey Options set up, and fully configured examples Questions. Ideal to help you see how all the options are configured for all the different Questions discussed in this guide. (Not ready yet, sorry!)</p>
   
 <h3 id="new-survey">New Survey</h3>
     
@@ -1385,14 +1397,6 @@
 </p>
 
 <p>Give your survey a meaningful name (e.g., Anchoring Effect Study — MGT 855 SP26) before clicking <span class="kw-ui">Create project</span>.</p>
-
-<h4>Survey Templates</h4>
-
-<p><a href="https://github.com/HillaryParent/Qualtrics-Guide/blob/fe79f91685784ebd3ae2fd875904a4a07de5dcb9/Survey_Template_-_Styling_Only.qsf">Survey Template - Styling Only</a> — this file only has the custom CSS and various recommended Survey Options set up. Ideal for just starting out.</p>
-
-<p><a href="https://github.com/HillaryParent/Qualtrics-Guide/blob/fe79f91685784ebd3ae2fd875904a4a07de5dcb9/Survey_Template_-_Survey_Flow.qsf">Survey Template - Survey Flow</a> — this file has the custom CSS and Survey Options set up, as well as the basic Survey Flow elements (consent, screeners, etc.). Ideal when you're ready to put your survey together, after you're more familiar with Qualtrics.</p>
-
-<p>Survey Template - Example Questions — this file has the custom CSS and Survey Options set up, and fully configured examples Questions. Ideal to help you see how all the options are configured for all the different Questions discussed in this guide. (Not ready yet, sorry!)</p>
 
 <hr class="section-divider" id="interface" />
 
@@ -2776,7 +2780,7 @@ Strongly&lt;br&gt;agree</code>
 
 <p>JavaScript can be used to style <span class="kw-concept">Questions</span> using CSS or for more functional things, like auto-advancing the page, inserting new HTML elements (i.e., text), etc.</p>
 
-<p>Although Qualtrics does provide a <a href="https://api.qualtrics.com/82bd4d5c331f1-qualtrics-java-script-question-api-class" target="_blank">Guide</a> it is, quite frankly, terrible. Even I get confused trying to read it.</p>
+<p>Although Qualtrics does provide a <a href="https://api.qualtrics.com/82bd4d5c331f1-qualtrics-java-script-question-api-class" target="_blank">Guide</a> it is, quite frankly, terrible. Even I get confused trying to read it. There are also things they don't tell you or warn you about, that I have spent a lot of energy and effort figuring out — so even if you <em>know</em> JavaScript, take advantage of the information I'm providing and don't try to do it on your own.</p>
 
 <hr class="section-divider" id="js-timing-functions" />
 
