@@ -776,10 +776,13 @@
     }
     
     .copy-btn {
-      position: absolute;
+      position: sticky;
       top: 0.4rem;
       right: 0.4rem;
+      float: right;
+      margin-bottom: -1.8rem;  /* so it overlaps the code, not pushes it down */
       background: rgba(255, 255, 255, 0.85);
+      
       border: 1px solid var(--border);
       border-radius: 4px;
       padding: 0.1rem 0.5rem 0.2rem;
@@ -1141,7 +1144,7 @@
         <a href="#branch-logic" class="nav-sub">Branch Logic</a>
         <a href="#groups" class="nav-sub">Groups</a>
         <a href="#end-of-survey" class="nav-sub">End of Survey</a>
-      <a href="#basic-structure">Basic Structure</a>
+      <a href="#survey-structure">Survey Structure</a>
         <a href="#url-parameters" class="nav-sub">URL Parameters</a>
         <a href="#consent" class="nav-sub">Consent</a>
         <a href="#screeners" class="nav-sub">Screeners</a>
@@ -2996,9 +2999,9 @@ if (afterText) {
 // insert your text between the quotation marks "" in the line below:
 var afterText = "";
 
-var ul = this.getQuestionContainer().querySelector("ul.choices");
+var inputs = this.getQuestionContainer().querySelectorAll(".text-input");
 
-Array.from(ul.querySelectorAll(".text-input")).forEach(input => {
+Array.from(inputs).forEach(input => {
 	var afterSpan = document.createElement("SPAN");
 	afterSpan.innerText = afterText;
 	afterSpan.classList.add("spanAfter");
@@ -3015,9 +3018,9 @@ Array.from(ul.querySelectorAll(".text-input")).forEach(input => {
 // insert your text between the quotation marks "" in the line below:
 var afterText = "";
 
-var ul = this.getQuestionContainer().querySelector("ul.choices");
+var inputs = this.getQuestionContainer().querySelectorAll(".text-input");
 
-Array.from(ul.querySelectorAll(".text-input")).forEach(input => {
+Array.from(inputs).forEach(input => {
 	var afterSpan = document.createElement("SPAN");
 	afterSpan.innerText = afterText;
 	afterSpan.style.whiteSpace = "pre";
@@ -3067,9 +3070,9 @@ Array.from(ul.querySelectorAll(".text-input")).forEach(input => {
      <p>Although you <em>can</em> hide the "Next" button from participants, I would advise against it — it's best to have a fallback for if the auto-submit fails.</p></div>
 </div>
 
-<h4>One Question per Page</h4>
+<h4 id="js-auto-submit-single" >One Question per Page</h4>
 
-<p>This code is for Multiple Choice / Matrix Table Questions with either Radio Buttons or Checkboxes, i.e., Single or Multiple Answer formats.</p>
+<p>This code is for a <span class="kw-type">Multiple Choice</span> / <span class="kw-type">Matrix Table</span> Question with either Radio Buttons or Checkboxes, (i.e., Single or Multiple Answer formats).</p>
 
 <p>Note that here, there is code in <span class="kw-data">addOnload</span> and <span class="kw-data">addOnUnload</span> and <span class="kw-data">top-level</span> code <em>outside</em> these functions. For that reason, I have wrapped the entire block in an IIFE (immediately invoked function expression). So, you need to copy & paste the <strong><em>entire</em></strong> block of code, overwriting the default function definitions in the JavaScript Editor. Note that you can add additional code to the functions like normal after you do this — the important part is having the whole block wrapped in <code class="language-javascript">(function() {  })();</code>.</p>
   
@@ -3084,24 +3087,22 @@ Array.from(ul.querySelectorAll(".text-input")).forEach(input => {
 	{
 		/*Place your JavaScript here to run when the page loads*/
 	
-		container = document.querySelector(".questions-container");
+		container = this.getQuestionContainer();
 		
-		var choices = Array.from(container.querySelectorAll(".question:not(.hidden) :is(.choices, .matrix-row)"));
+		var choices = Array.from(container.querySelectorAll(":is(.choices, .matrix-row)"));
 	
 		// listens for radio buttons to be selected / checkboxes to be checked (i.e., "change" event)
 		// immediately submits the page if an option has been selected
-	
 		handleChange = () => {
 			if (choices.every(choice => choice.querySelector("span.selected"))) {
 				const btn = document.querySelector("#next-button");
-			  if (btn) btn.click();
+				if (btn) btn.click();
 			}
-			
 		};
+		
 		container.addEventListener("change", handleChange);
 		
 	});
-		
 		
 	Qualtrics.SurveyEngine.addOnReady(function()
 	{
@@ -3125,9 +3126,58 @@ Array.from(ul.querySelectorAll(".text-input")).forEach(input => {
 
 <h4>Multiple Questions per Page</h4>
 
-<p>It's the same code as above however: only put this code on <strong>ONE</strong> question on the page, not all of them!</p>
+<p>Only put this code on <strong>ONE</strong> question on the page, not all of them!</p>
 
-<p>Also make sure that the page <em><strong>only</strong></em> has Multiple Choice, Matrix Table, and/or Text / Graphic Questions on it.</p>
+<p>Also make sure that the page <em><strong>only</strong></em> has <span class="kw-type">Multiple Choice</span>, <span class="kw-type">Matrix Table</span>, and/or <span class="kw-type">Text / Graphic</span> Questions on it.</p>
+
+<p>If you have other Question Types (like Text Entry), this code will auto-submit the page when they have answered all the Multiple Choice & Matrix Table Questions, even if they haven't answered the Text Entry Question yet.</p>
+
+<div class="code-snippet">
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<code>(function() {
+	// global variables
+	var container; // question container
+	var handleChange; // function to handle change event
+	
+	Qualtrics.SurveyEngine.addOnload(function()
+	{
+		/*Place your JavaScript here to run when the page loads*/
+	
+		container = document.querySelector(".questions-container");
+	
+		// listens for radio buttons to be selected / checkbox to be checked (i.e., "change" event)
+		// immediately submits the page if an option has been selected
+		handleChange = () => {
+		  var choices = Array.from(container.querySelectorAll(".question:not(.hidden) :is(.choices, .matrix-row)"));
+		  
+			if (choices.every(choice => choice.querySelector("span.selected"))) {
+				const btn = document.querySelector("#next-button");
+				if (btn) btn.click();
+			}
+		};
+		
+		container.addEventListener("change", handleChange);
+		
+	});
+		
+		
+	Qualtrics.SurveyEngine.addOnReady(function()
+	{
+		/*Place your JavaScript here to run when the page is fully displayed*/
+		
+	});
+	
+	Qualtrics.SurveyEngine.addOnUnload(function()
+	{
+		/*Place your JavaScript here to run when the page is unloaded*/
+		// remove the listener
+		if (container && handleChange) {
+			container.removeEventListener("change", handleChange);
+		}
+	});
+})();
+</code>
+</div>
 
 
 <div class="callout note">
@@ -3186,7 +3236,7 @@ style.innerHTML = `
 	grid-template-columns: minmax(6.25rem, 55%) 1fr !important;
 	max-width: 900px !important;
 }
-`
+`;
 this.getQuestionContainer().insertAdjacentElement("beforebegin", style);</code>
 </div>
 
@@ -3199,7 +3249,7 @@ style.innerHTML = `
 #question-` + this.questionId + ` [REST OF SELECTORS] {
 	property: value;
 }
-`
+`;
 this.getQuestionContainer().insertAdjacentElement("beforebegin", style);</code>
 </div>
 
@@ -3220,7 +3270,7 @@ style.innerHTML = `
 	grid-template-columns: minmax(6.25rem, 55%) 1fr !important;
 	max-width: 900px !important;
 }
-`
+`;
 this.getQuestionContainer().insertAdjacentElement("beforebegin", style);</code>
 </div>
 
@@ -3244,7 +3294,7 @@ style.innerHTML = `
 #question-` + this.questionId + ` .choice-label {
 	width: 120px !important;
 }
-`
+`;
 this.getQuestionContainer().insertAdjacentElement("beforebegin", style);</code>
 </div>
 
@@ -4117,9 +4167,9 @@ input.style.backgroundColor = "#e5e5e5";</code>
 
 <p>The three specific "End of Survey" routes will be explained in the next section.</p>
 
-<hr class="section-divider" id="basic-structure" />
+<hr class="section-divider" id="survey-structure" />
 
-<h3>Basic Survey Structure</h3>
+<h3>Survey Structure</h3>
 
 <ol class="ul-inline no-gap">
   <li><em><code>URL Parameters</code></em></li>
@@ -5153,6 +5203,8 @@ this.getQuestionTextContainer().innerText = "Do you like " + conditionText + "?"
 
 <h2 id="links">Links</h2>
 
+<p>Just an organized list of all the links in this guide, for easy reference.</p>
+
 <h3>Qualtrics</h3>
 
 <ul class="ul-indent no-gap">
@@ -5659,7 +5711,7 @@ style.innerHTML = `
 	grid-template-columns: minmax(6.25rem, 55%) 1fr !important;
 	max-width: 900px !important;
 }
-`
+`;
 this.getQuestionContainer().insertAdjacentElement("beforebegin", style);</code>
 </div>
 </li> 
@@ -5682,7 +5734,7 @@ style.innerHTML = `
 #question-` + this.questionId + `.question.form .choice-label {
 	width: 120px !important;
 }
-`
+`;
 this.getQuestionContainer().insertAdjacentElement("beforebegin", style);</code>
 </div>
 <div class="small-note warn"><span class="kw-warn">Warning:</span> This assumes you have the general Form Field CSS rulesets above, which changes the alignment of the labels and the textboxes.</div>
@@ -5708,7 +5760,7 @@ style.innerHTML = `
 #question-` + this.questionId + ` [REST OF SELECTORS] {
 	property: value;
 }
-`
+`;
 this.getQuestionContainer().insertAdjacentElement("beforebegin", style);</code>
 </div>
 <div class="small-note warn"><span class="kw-warn">Warning:</span> Do not change the string concatenation to template literals (${...}). Template literals (${...}) cannot be used because Qualtrics interprets ${...} as its own Piped Text syntax (I believe, anyway).</div>
@@ -5811,9 +5863,9 @@ if (afterText) {
 // insert your text between the quotation marks "" in the line below:
 var afterText = "";
 
-var ul = this.getQuestionContainer().querySelector("ul.choices");
+var inputs = this.getQuestionContainer().querySelectorAll(".text-input");
 
-Array.from(ul.querySelectorAll(".text-input")).forEach(input => {
+Array.from(inputs).forEach(input => {
 	var afterSpan = document.createElement("SPAN");
 	afterSpan.innerText = afterText;
 	afterSpan.classList.add("spanAfter");
@@ -5833,9 +5885,9 @@ Array.from(ul.querySelectorAll(".text-input")).forEach(input => {
 // insert your text between the quotation marks "" in the line below:
 var afterText = "";
 
-var ul = this.getQuestionContainer().querySelector("ul.choices");
+var inputs = this.getQuestionContainer().querySelectorAll(".text-input");
 
-Array.from(ul.querySelectorAll(".text-input")).forEach(input => {
+Array.from(inputs).forEach(input => {
 	var afterSpan = document.createElement("SPAN");
 	afterSpan.innerText = afterText;
 	afterSpan.style.whiteSpace = "pre";
@@ -5901,23 +5953,22 @@ Array.from(ul.querySelectorAll(".text-input")).forEach(input => {
 	Qualtrics.SurveyEngine.addOnload(function()
 	{
 		/*Place your JavaScript here to run when the page loads*/
-	
-		container = document.querySelector(".questions-container");
 		
-		var choices = Array.from(container.querySelectorAll(".question:not(.hidden) :is(.choices, .matrix-row)"));
+		container = this.getQuestionContainer();
+		
+		var choices = Array.from(container.querySelectorAll(":is(.choices, .matrix-row)"));
 	
-		// listens for radio buttons to be selected / checkbox to be checked (i.e., "change" event)
+		// listens for radio buttons to be selected / checkboxes to be checked (i.e., "change" event)
 		// immediately submits the page if an option has been selected
-	
 		handleChange = () => {
 			if (choices.every(choice => choice.querySelector("span.selected"))) {
-				const btn = document.querySelector("#next-button");
-			  if (btn) btn.click();
+        const btn = document.querySelector("#next-button");
+        if (btn) btn.click();
 			}
-			
 		};
-		container.addEventListener("change", handleChange);
 		
+		container.addEventListener("change", handleChange);
+
 	});
 		
 		
@@ -5939,6 +5990,8 @@ Array.from(ul.querySelectorAll(".text-input")).forEach(input => {
 </code>
 </div>
 <div class="small-note warn"><strong>Note:</strong> You can add additional code to the <span class="kw-data">addOnload</span>, <span class="kw-data">addOnReady</span>, or <span class="kw-data">addOnUnload</span> functions like you normally would. The key here is that everything is wrapped in an IIFE <code class="language-javascript">(function() {  })();</code>. So, just move any existing code into the correct function after copying and pasting the above.</div>
+
+<div class="small-note warn"><span class="kw-warn">Warning:</span> Although you might be tempted to use the built-in function <code>this.clickNextButton()</code> (and may even think it's odd that I didn't) I urge you not to — extensive testing has shown me that <code>this.clickNextButton()</code> is <em><strong>unreliable</strong></em>. I have had it fail using the same browser on different computers. Simulating a click using <code>.click()</code> is <em><strong>much</strong></em> more reliable.</div>
 </li>
 
 <li><h5 id="code-bank-js-gen-auto-submit-multi" class="gap-1">Pages with Multiple Questions</h5>
@@ -5957,19 +6010,18 @@ Replace <em><strong>everything</strong></em> in the JavaScript Editor of <em><st
 		/*Place your JavaScript here to run when the page loads*/
 	
 		container = document.querySelector(".questions-container");
-		
-		var choices = Array.from(container.querySelectorAll(".question:not(.hidden) :is(.choices, .matrix-row)"));
 	
 		// listens for radio buttons to be selected / checkbox to be checked (i.e., "change" event)
 		// immediately submits the page if an option has been selected
-	
 		handleChange = () => {
+		  var choices = Array.from(container.querySelectorAll(".question:not(.hidden) :is(.choices, .matrix-row)"));
+		  
 			if (choices.every(choice => choice.querySelector("span.selected"))) {
 				const btn = document.querySelector("#next-button");
-			  if (btn) btn.click();
+				if (btn) btn.click();
 			}
-			
 		};
+		
 		container.addEventListener("change", handleChange);
 		
 	});
@@ -5993,6 +6045,8 @@ Replace <em><strong>everything</strong></em> in the JavaScript Editor of <em><st
 </code>
 </div>
 <div class="small-note warn"><strong>Note:</strong> You can add additional code to the <span class="kw-data">addOnload</span>, <span class="kw-data">addOnReady</span>, or <span class="kw-data">addOnUnload</span> functions like you normally would. The key here is that everything is wrapped in an IIFE <code class="language-javascript">(function() {  })();</code>. So, just move any existing code into the correct function after copying and pasting the above.</div>
+
+<div class="small-note warn"><span class="kw-warn">Warning:</span> Although you might be tempted to use the built-in function <code>this.clickNextButton()</code> (and may even think it's odd that I didn't) I urge you not to — extensive testing has shown me that <code>this.clickNextButton()</code> is <em><strong>unreliable</strong></em>. I have had it fail using the same browser on different computers. Simulating a click using <code>.click()</code> is <em><strong>much</strong></em> more reliable.</div>
 </li>
 
 </ul>
